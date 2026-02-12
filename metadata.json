@@ -1,0 +1,8 @@
+{
+  "name": "The Green Olive Bar and Grill",
+  "description": "A sophisticated, high-end restaurant website featuring dynamic menus, event listings, and a virtual concierge powered by Gemini.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
