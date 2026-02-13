@@ -105,10 +105,10 @@ const Navbar = () => {
               </button>
             ))}
             <button
-              onClick={() => { window.open('https://www.clover.com/online-ordering/the-green-olive-bar-and-litchfield-park', '_blank'); setMenuOpen(false); }}
+              onClick={() => { window.open('https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank'); setMenuOpen(false); }}
               className="mt-4 bg-[#2a2a2a] text-white px-8 py-4 rounded-full text-base font-bold uppercase tracking-widest hover:bg-[#6ec471] transition-all shadow-xl"
             >
-              Order Now
+              Reserve Now
             </button>
           </div>
         </div>
