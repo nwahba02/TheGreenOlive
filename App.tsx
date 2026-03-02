@@ -251,6 +251,8 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
             <img 
               src="/backround.jpg" 
               alt="Mediterranean Food at The Green Olive Bar and Grill in Litchfield Park Arizona" 
+              loading="lazy"
+              decoding="async"
               className="rounded-[40px] shadow-2xl h-[650px] w-full object-cover" 
             />
           </div>
@@ -298,6 +300,8 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
                   <img
                     src={item.image ? item.image : `https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800&sig=${idx}`}
                     alt={item.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                     style={
                       item.name === 'Chicken Breast Special'
@@ -356,15 +360,15 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
                   />
                 </div>
                 <div className="relative group rounded-[40px] overflow-hidden h-[300px] shadow-2xl">
-                  <img src="/24107ECD-0AA8-4FCD-B4CB-7B7AE18B5A57.JPEG" alt="Events at The Green Olive Bar and Grill" className="w-full h-full object-cover" />
+                  <img src="/24107ECD-0AA8-4FCD-B4CB-7B7AE18B5A57.JPEG" alt="Events at The Green Olive Bar and Grill" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="space-y-6 pt-16">
                 <div className="relative group rounded-[40px] overflow-hidden h-[300px] shadow-2xl">
-                  <img src="/2EEE2E2B-F367-4525-8CA4-BB25F2B3E760.JPEG" alt="Private Events in Litchfield Park Arizona" className="w-full h-full object-cover" />
+                  <img src="/2EEE2E2B-F367-4525-8CA4-BB25F2B3E760.JPEG" alt="Private Events in Litchfield Park Arizona" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="relative group rounded-[40px] overflow-hidden h-[400px] shadow-2xl">
-                  <img src="/4488A75E-D8FA-4D3F-88D4-B2CD607FEFC5.JPEG" alt="Celebrations at The Green Olive" className="w-full h-full object-cover" />
+                  <img src="/4488A75E-D8FA-4D3F-88D4-B2CD607FEFC5.JPEG" alt="Celebrations at The Green Olive" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -380,6 +384,8 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
             <img 
               src="/pasta.jpg" 
               alt="Handcrafted Pizza at The Green Olive Bar and Grill Litchfield Park" 
+              loading="lazy"
+              decoding="async"
               className="rounded-[60px] shadow-2xl w-full h-[420px] object-cover relative z-10"
               style={{ objectPosition: '60% center' }}
             />
@@ -414,7 +420,7 @@ const MenuSection = ({ title, items, image }: { title: string, items: MenuItem[]
     <div className="flex flex-col md:flex-row gap-8 mb-12">
       {image && (
         <div className="w-full md:w-72 h-48 rounded-[30px] overflow-hidden shadow-xl flex-shrink-0">
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+          <img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
         </div>
       )}
       <div className="flex-1">
@@ -533,6 +539,51 @@ const MenuPage = ({ activeMenuType, setActiveMenuType }: { activeMenuType: MenuT
   );
 };
 
+const LazyImage = ({ src, alt }: { src: string; alt: string }) => {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [hasLoaded, setHasLoaded] = React.useState(false);
+  const imgRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasLoaded) {
+            setIsVisible(true);
+            setHasLoaded(true);
+          }
+        });
+      },
+      { rootMargin: '50px' } // Start loading 50px before image enters viewport
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, [hasLoaded]);
+
+  return (
+    <div ref={imgRef} className="relative group overflow-hidden rounded-[40px] border border-[#d9a74a]/10 shadow-xl">
+      {isVisible ? (
+        <img 
+          src={src} 
+          alt={alt} 
+          decoding="async"
+          className="w-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+        />
+      ) : (
+        <div className="w-full h-[300px] bg-[#f5f0e1] animate-pulse" />
+      )}
+    </div>
+  );
+};
+
 const GalleryPage = () => (
   <div className="pt-40 pb-32 px-6 max-w-7xl mx-auto animate-in fade-in">
     <div className="text-center mb-24">
@@ -542,9 +593,7 @@ const GalleryPage = () => (
     </div>
     <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
       {GALLERY.filter(img => img.url.startsWith('/gal/')).map(img => (
-        <div key={img.id} className="relative group overflow-hidden rounded-[40px] border border-[#d9a74a]/10 shadow-xl">
-          <img src={img.url} alt="Gallery photo" className="w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-        </div>
+        <LazyImage key={img.id} src={img.url} alt="Gallery photo" />
       ))}
     </div>
   </div>
@@ -563,7 +612,7 @@ function EventsPage() {
         {EVENTS.map(event => (
           <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[60px] overflow-hidden shadow-2xl border border-[#d9a74a]/5">
             <div className="h-[500px] lg:h-full">
-              <img src={event.image} alt={event.title} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+              <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
             </div>
             <div className="p-16 flex flex-col justify-center bg-[#f5f0e1]/10">
               <span className="text-[#d9a74a] font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
@@ -614,7 +663,7 @@ const AboutPage = ({ setPage }: { setPage: (p: Page) => void }) => (
             </p>
           </div>
           <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
-            <img src="/craigrootimaging_GO-233-scaled.jpg" alt="Restaurant Interior" className="w-full h-[500px] object-cover" />
+            <img src="/craigrootimaging_GO-233-scaled.jpg" alt="Restaurant Interior" loading="lazy" decoding="async" className="w-full h-[500px] object-cover" />
           </div>
         </div>
       </div>
@@ -665,7 +714,7 @@ const AboutPage = ({ setPage }: { setPage: (p: Page) => void }) => (
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
-            <img src="/craigrootimaging_GO-388-scaled.jpg" alt="Event Catering" className="w-full h-[500px] object-cover" />
+            <img src="/craigrootimaging_GO-388-scaled.jpg" alt="Event Catering" loading="lazy" decoding="async" className="w-full h-[500px] object-cover" />
           </div>
           <div>
             <span className="text-[#d9a74a] font-black uppercase tracking-[0.3em] text-[14px] mb-6 block">Events & Catering</span>
