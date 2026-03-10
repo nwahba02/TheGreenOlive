@@ -11,7 +11,7 @@ function useNavigateScroll() {
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Page, MenuItem, MenuType } from './types';
-import { ICONS, MENU_DATA, EVENTS, GALLERY } from './constants';
+import { ICONS, MENU_DATA, EVENTS, PAST_EVENTS, GALLERY } from './constants';
 
 /**
  * THEME PALETTE:
@@ -618,20 +618,52 @@ function EventsPage() {
               <span className="text-[#d9a74a] font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
               <h2 className="text-5xl mb-8 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h2>
               <p className="text-stone-600 mb-10 leading-relaxed text-xl font-light">{event.description}</p>
+              {event.specialOffer && (
+                <div className="bg-[#6ec471]/10 border-2 border-[#6ec471] rounded-2xl p-6 mb-10">
+                  <p className="text-[#2a2a2a] font-bold text-lg text-center">{event.specialOffer}</p>
+                </div>
+              )}
               <button 
-                onClick={() => navigateScroll('/contact')}
+                onClick={() => window.open('https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
                 className="bg-[#6ec471] text-white px-12 py-5 rounded-full font-bold w-fit hover:bg-[#2a2a2a] transition-all shadow-xl uppercase tracking-widest text-xs">
-                Request Invitation
+                Reserve Now
               </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Past Events Section */}
+      {PAST_EVENTS.length > 0 && (
+        <div className="mt-32">
+          <div className="text-center mb-16">
+            <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[14px] mb-6 block">The Archives</span>
+            <h2 className="text-5xl md:text-7xl mb-8 tracking-tighter uppercase font-bold text-[#2a2a2a]">Past Events</h2>
+            <p className="text-stone-500 italic font-serif text-lg font-light">Memorable moments from previous celebrations.</p>
+          </div>
+          <div className="space-y-16">
+            {PAST_EVENTS.map(event => (
+              <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[60px] overflow-hidden shadow-xl border border-[#d9a74a]/5 opacity-90">
+                <div className="h-[400px] lg:h-full">
+                  <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale" />
+                </div>
+                <div className="p-16 flex flex-col justify-center bg-stone-50">
+                  <span className="text-stone-400 font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
+                  <h3 className="text-4xl mb-6 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h3>
+                  <p className="text-stone-500 leading-relaxed text-lg font-light">{event.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-const AboutPage = ({ setPage }: { setPage: (p: Page) => void }) => (
+const AboutPage = () => {
+  const navigateScroll = useNavigateScroll();
+  return (
   <div className="animate-in fade-in">
     {/* Hero Section */}
     <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
@@ -736,7 +768,7 @@ const AboutPage = ({ setPage }: { setPage: (p: Page) => void }) => (
               </div>
             </div>
             <button 
-              onClick={() => setPage('contact')}
+              onClick={() => navigateScroll('/contact')}
               className="px-12 py-5 bg-[#6ec471] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#d9a74a] transition-all shadow-xl"
             >
               Contact Us
@@ -766,7 +798,8 @@ const AboutPage = ({ setPage }: { setPage: (p: Page) => void }) => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 const ContactPage = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -850,7 +883,7 @@ export default function App() {
       <Navbar />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<HomePage setPage={() => {}} setActiveMenuType={setActiveMenuType} />} />
+          <Route path="/" element={<HomePage setActiveMenuType={setActiveMenuType} />} />
           <Route path="/menu" element={<MenuPage activeMenuType={activeMenuType} setActiveMenuType={setActiveMenuType} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/events" element={<EventsPage />} />

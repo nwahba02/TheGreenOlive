@@ -18,6 +18,7 @@ export interface EventItem {
   date: string;
   description: string;
   image: string;
+  specialOffer?: string;
 }
 
 export interface GalleryImage {

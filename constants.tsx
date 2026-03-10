@@ -194,6 +194,10 @@ export const MENU_DATA: MenuItem[] = [
 ];
 
 export const EVENTS: EventItem[] = [
+  { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', specialOffer: 'Book Online for April 11th and save $5 off of the Cover Charge Per Person' }
+];
+
+export const PAST_EVENTS: EventItem[] = [
   { id: 'e1', title: 'For Her & I', date: 'Feb 14th, 4:00 PM - 10:00 PM', description: 'Celebrate love this Valentines Day at The Green Olive Bar & Grill', image: '/ForHer&I.png' }
 ];
 
@@ -407,6 +411,17 @@ export const GALLERY: GalleryImage[] = [
   { id: 'g167', url: '/gal/IMG_4699.jpg', caption: '' },
   { id: 'g168', url: '/gal/IMG_4701.jpg', caption: '' },
   { id: 'g169', url: '/gal/IMG_4705.jpg', caption: '' },
+  { id: 'g170', url: '/gal/04D1736A-09F7-4178-9638-3ABC317DB6EA.jpg', caption: '' },
+  { id: 'g171', url: '/gal/1EAD0130-15F4-407B-952E-F89ED7F14B77.jpg', caption: '' },
+  { id: 'g172', url: '/gal/2A574A95-432C-4227-957D-0374E9D887AB.jpg', caption: '' },
+  { id: 'g173', url: '/gal/3B5AC170-BF3A-49BD-8715-6089999E4ECA.jpg', caption: '' },
+  { id: 'g174', url: '/gal/59BB776F-B5E2-4E54-A5E7-9851E465A78A.jpg', caption: '' },
+  { id: 'g175', url: '/gal/74A49DF0-BAE3-4009-A3EA-C33EA6BBEFAB.jpg', caption: '' },
+  { id: 'g176', url: '/gal/BF0EC521-7C2C-4426-A878-47FEC4CB397C.jpg', caption: '' },
+  { id: 'g177', url: '/gal/D6CC0617-5ED1-4391-9951-D589B018A320.jpg', caption: '' },
+  { id: 'g178', url: '/gal/DD4C00DF-6B19-4EA3-B4F6-990C6255309F.jpg', caption: '' },
+  { id: 'g179', url: '/gal/F2C0425F-B32C-4908-982D-FBE0B3805F0C.jpg', caption: '' },
+  { id: 'g180', url: '/gal/FDDD6DAC-3BC3-47E5-A4F6-F448BEB9164D.jpg', caption: '' },
   { id: 'g62', url: '/gallery/craigrootimaging_GO-271-2048x1366.jpg', caption: 'craigrootimaging_GO-271-2048x1366.jpg' },
   { id: 'g63', url: '/gallery/craigrootimaging_GO-273-768x512.jpg', caption: 'craigrootimaging_GO-273-768x512.jpg' },
   { id: 'g64', url: '/gallery/craigrootimaging_GO-276-300x200.jpg', caption: 'craigrootimaging_GO-276-300x200.jpg' },
