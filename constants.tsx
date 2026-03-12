@@ -194,7 +194,7 @@ export const MENU_DATA: MenuItem[] = [
 ];
 
 export const EVENTS: EventItem[] = [
-  { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', specialOffer: 'Book Online for April 11th and save $5 off of the Cover Charge Per Person' }
+  { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', specialOffer: 'Book Online and save $5 off of the Cover Charge Per Person', reservationUrl: 'https://tableagent.com/restaurant/the-green-olive-bar-and-grill/event/276996/turkish-night/' }
 ];
 
 export const PAST_EVENTS: EventItem[] = [

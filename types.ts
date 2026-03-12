@@ -19,6 +19,7 @@ export interface EventItem {
   description: string;
   image: string;
   specialOffer?: string;
+  reservationUrl?: string;
 }
 
 export interface GalleryImage {

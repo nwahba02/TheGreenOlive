@@ -624,7 +624,7 @@ function EventsPage() {
                 </div>
               )}
               <button 
-                onClick={() => window.open('https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
+                onClick={() => window.open(event.reservationUrl || 'https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
                 className="bg-[#6ec471] text-white px-12 py-5 rounded-full font-bold w-fit hover:bg-[#2a2a2a] transition-all shadow-xl uppercase tracking-widest text-xs">
                 Reserve Now
               </button>
