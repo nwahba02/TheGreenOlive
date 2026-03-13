@@ -10,6 +10,7 @@ function useNavigateScroll() {
 }
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Page, MenuItem, MenuType } from './types';
 import { ICONS, MENU_DATA, EVENTS, PAST_EVENTS, GALLERY } from './constants';
 
@@ -895,6 +896,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
