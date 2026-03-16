@@ -129,7 +129,7 @@ const Footer = () => {
         </p>
         <div className="flex space-x-6">
           <a href="https://www.instagram.com/greenolivebarandgrill" target="_blank" rel="noopener noreferrer" className="hover:text-[#6ec471] transition-colors"><ICONS.Instagram /></a>
-          <a href="mailto:thegreenolivebargrill@gmail.com" className="hover:text-[#6ec471] transition-colors"><ICONS.Mail /></a>
+          <a href="mailto:thegreenolivelitchfield@gmail.com" className="hover:text-[#6ec471] transition-colors"><ICONS.Mail /></a>
           <a href="tel:6023543424" className="hover:text-[#6ec471] transition-colors"><ICONS.Phone /></a>
           <a href="https://www.yelp.com/biz/the-green-olive-litchfield-park-2" target="_blank" rel="noopener noreferrer" className="hover:text-[#6ec471] transition-colors"><ICONS.Yelp /></a>
         </div>
@@ -147,14 +147,25 @@ const Footer = () => {
       <div>
         <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-s">Connect</h4>
         <div className="flex items-center mb-4 space-x-3">
-          <ICONS.Phone />
+          <div className="flex-shrink-0">
+            <ICONS.Phone />
+          </div>
           <span className="text-sm font-medium">(602) 354-3424</span>
         </div>
         <div className="flex items-center space-x-3">
-          <ICONS.Mail />
-          <span className="text-sm font-medium">thegreenolivebargrill@gmail.com</span>
+          <div className="flex-shrink-0">
+            <ICONS.Mail />
+          </div>
+          <span className="text-sm font-medium">thegreenolivelitchfield@gmail.com</span>
         </div>
       </div>
+    </div>
+    
+    {/* Now Hiring Section */}
+    <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-16 text-center">
+      <p className="text-stone-400 text-sm">
+        <span className="text-stone-300 font-semibold">Now Hiring</span> — Servers, Bartenders & Cooks — <a href="mailto:thegreenolivelitchfield@gmail.com?subject=Job Application" className="text-[#d9a74a] hover:text-[#6ec471] transition-colors underline">Email to Apply</a>
+      </p>
     </div>
     
     <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-20 pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -805,15 +816,42 @@ const AboutPage = () => {
 const ContactPage = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => {
+    setError(false);
+
+    const formData = new FormData();
+    formData.append('access_key', '9404ef94-4a77-4850-881c-793efbae713f'); // Replace with your actual key
+    formData.append('name', formState.name);
+    formData.append('email', formState.email);
+    formData.append('message', formState.message);
+    formData.append('subject', 'New Contact Form Submission from The Green Olive');
+    formData.append('from_name', 'The Green Olive Website');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormState({ name: '', email: '', message: '' });
+        alert('Thank you for your message! We will get back to you soon.');
+      } else {
+        setError(true);
+        alert('Oops! Something went wrong. Please try again or call us directly.');
+      }
+    } catch (err) {
+      setError(true);
+      alert('Oops! Something went wrong. Please try again or call us directly.');
+    } finally {
       setSubmitted(false);
-      setFormState({ name: '', email: '', message: '' });
-      alert('Thank you for your message! We will get back to you soon.');
-    }, 2000);
+    }
   };
 
   return (
