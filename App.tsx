@@ -351,11 +351,12 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
                 <div className="relative group rounded-[40px] overflow-hidden h-[400px] shadow-2xl">
                   <video 
                     src="/Turkish%20Night.mp4" 
-                    autoPlay 
                     loop 
                     muted 
                     playsInline
                     controls
+                    preload="none"
+                    poster="/24107ECD-0AA8-4FCD-B4CB-7B7AE18B5A57.JPEG"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
