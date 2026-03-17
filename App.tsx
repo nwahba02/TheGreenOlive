@@ -482,6 +482,13 @@ const MenuSection = ({ title, items, image }: { title: string, items: MenuItem[]
 );
 
 const MenuPage = ({ activeMenuType, setActiveMenuType }: { activeMenuType: MenuType, setActiveMenuType: (t: MenuType) => void }) => {
+  // Track Menu page view with Meta Pixel
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'ViewContent', { content_name: 'Menu Page' });
+    }
+  }, []);
+
   const menuTypes: MenuType[] = ['Brunch', 'Lunch/Dinner', 'Drinks', 'Catering'];
 
   // Explicit ordering for sections
@@ -613,6 +620,14 @@ const GalleryPage = () => (
 
 function EventsPage() {
   const navigateScroll = useNavigateScroll();
+  
+  // Track Events page view with Meta Pixel
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'ViewContent', { content_name: 'Events Page' });
+    }
+  }, []);
+  
   return (
     <div className="pt-40 pb-32 px-6 max-w-7xl mx-auto animate-in fade-in">
       <div className="text-center mb-24">
