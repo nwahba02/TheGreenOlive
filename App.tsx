@@ -142,7 +142,8 @@ const Footer = () => {
       </div>
       <div>
         <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-s">Hours</h4>
-        <p className="text-sm">Mon - Sun: 10am - 9pm</p>
+        <p className="text-sm mb-1">Sun - Thu: 11:00 AM - 9:00 PM</p>
+        <p className="text-sm">Fri - Sat: 11:00 AM - 10:00 PM</p>
       </div>
       <div>
         <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-s">Connect</h4>
