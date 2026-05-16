@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { MenuItem, EventItem, GalleryImage } from './types';
 
 export const MENU_DATA: MenuItem[] = [
@@ -193,12 +192,11 @@ export const MENU_DATA: MenuItem[] = [
   { id: 'ct_pt20', name: 'Panini Tray', price: '$120', description: 'Choose 7 Full Paninis Cut Into Halves With Caesar Salad (Feeds 10 - 12)', menuType: 'Catering', section: 'Party Trays To Go' },
 ];
 
-export const EVENTS: EventItem[] = [
-  { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', specialOffer: 'Book Online and save $5 off of the Cover Charge Per Person', reservationUrl: 'https://tableagent.com/restaurant/the-green-olive-bar-and-grill/event/276996/turkish-night/' }
-];
+export const EVENTS: EventItem[] = [];
 
 export const PAST_EVENTS: EventItem[] = [
-  { id: 'e1', title: 'For Her & I', date: 'Feb 14th, 4:00 PM - 10:00 PM', description: 'Celebrate love this Valentines Day at The Green Olive Bar & Grill', image: '/ForHer&I.png' }
+  { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', video: '/Turkish.mp4' },
+  { id: 'e1', title: 'For Her & I', date: 'Feb 14th, 4:00 PM - 10:00 PM', description: 'Celebrate love this Valentines Day at The Green Olive Bar & Grill', image: '/ForHer&I.png', video: '/ForHer.mp4' }
 ];
 
 export const GALLERY: GalleryImage[] = [

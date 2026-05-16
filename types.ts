@@ -18,6 +18,7 @@ export interface EventItem {
   date: string;
   description: string;
   image: string;
+  video?: string;
   specialOffer?: string;
   reservationUrl?: string;
 }

@@ -8,7 +8,7 @@ function useNavigateScroll() {
     window.scrollTo(0, 0);
   }, [navigate]);
 }
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Page, MenuItem, MenuType } from './types';
 import { ICONS, MENU_DATA, EVENTS, PAST_EVENTS, GALLERY } from './constants';
@@ -394,14 +394,7 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="absolute -inset-10 bg-[#6ec471]/5 rounded-full blur-3xl -z-10"></div>
-            <img 
-              src="/pasta.jpg" 
-              alt="Handcrafted Pizza at The Green Olive Bar and Grill Litchfield Park" 
-              loading="lazy"
-              decoding="async"
-              className="rounded-[60px] shadow-2xl w-full h-[420px] object-cover relative z-10"
-              style={{ objectPosition: '60% center' }}
-            />
+            <PizzaVideo />
           </div>
           <div className="order-1 lg:order-2">
             <span className="text-[#6ec471] font-black uppercase tracking-[0.3em] text-[14px] mb-6 block">Italian-Inspired Comfort</span>
@@ -427,6 +420,54 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
     </div>
   );
 };
+
+const PizzaVideo = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src="/pizza.mp4"
+      poster="/pasta.jpg"
+      muted
+      loop
+      playsInline
+      preload="none"
+      className="rounded-[60px] shadow-2xl w-full h-[420px] object-cover relative z-10"
+    />
+  );
+};
+
+const PastEventVideo = ({ src, poster, alt }: { src: string; poster: string; alt: string }) => (
+  <video
+    src={src}
+    poster={poster}
+    aria-label={alt}
+    controls
+    playsInline
+    preload="none"
+    className="w-full h-full object-cover"
+  />
+);
 
 const MenuSection = ({ title, items, image }: { title: string, items: MenuItem[], image?: string }) => (
   <div className="mb-24">
@@ -630,60 +671,126 @@ function EventsPage() {
   }, []);
   
   return (
-    <div className="pt-40 pb-32 px-6 max-w-7xl mx-auto animate-in fade-in">
-      <div className="text-center mb-24">
-        <span className="text-[#6ec471] font-black uppercase tracking-[0.4em] text-[14px] mb-6 block">The Calendar</span>
-        <h1 className="text-6xl md:text-9xl mb-8 tracking-tighter uppercase font-bold text-[#2a2a2a]">Our Events</h1>
-        <p className="text-stone-500 italic font-serif text-xl font-light">Join us for a curated series of Mediterranean-inspired gatherings.</p>
-      </div>
-      <div className="space-y-16">
-        {EVENTS.map(event => (
-          <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[60px] overflow-hidden shadow-2xl border border-[#d9a74a]/5">
-            <div className="h-[500px] lg:h-full">
-              <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
-            </div>
-            <div className="p-16 flex flex-col justify-center bg-[#f5f0e1]/10">
-              <span className="text-[#d9a74a] font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
-              <h2 className="text-5xl mb-8 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h2>
-              <p className="text-stone-600 mb-10 leading-relaxed text-xl font-light">{event.description}</p>
-              {event.specialOffer && (
-                <div className="bg-[#6ec471]/10 border-2 border-[#6ec471] rounded-2xl p-6 mb-10">
-                  <p className="text-[#2a2a2a] font-bold text-lg text-center">{event.specialOffer}</p>
-                </div>
-              )}
-              <button 
-                onClick={() => window.open(event.reservationUrl || 'https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
-                className="bg-[#6ec471] text-white px-12 py-5 rounded-full font-bold w-fit hover:bg-[#2a2a2a] transition-all shadow-xl uppercase tracking-widest text-xs">
-                Reserve Now
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="animate-in fade-in">
 
-      {/* Past Events Section */}
-      {PAST_EVENTS.length > 0 && (
-        <div className="mt-32">
-          <div className="text-center mb-16">
-            <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[14px] mb-6 block">The Archives</span>
-            <h2 className="text-5xl md:text-7xl mb-8 tracking-tighter uppercase font-bold text-[#2a2a2a]">Past Events</h2>
-            <p className="text-stone-500 italic font-serif text-lg font-light">Memorable moments from previous celebrations.</p>
-          </div>
-          <div className="space-y-16">
-            {PAST_EVENTS.map(event => (
-              <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[60px] overflow-hidden shadow-xl border border-[#d9a74a]/5 opacity-90">
-                <div className="h-[400px] lg:h-full">
-                  <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale" />
+      {/* Page Header */}
+      <section className="pt-40 pb-16 text-center px-6 bg-[#f5f0e1]">
+        <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[13px] mb-6 block">The Calendar</span>
+        <h1 className="text-6xl md:text-9xl tracking-tighter uppercase font-bold text-[#2a2a2a] mb-6">Our Events</h1>
+        <div className="w-16 h-1 bg-[#6ec471] rounded-full mx-auto mb-6" />
+        <p className="text-stone-500 italic font-serif text-xl font-light max-w-xl mx-auto">Join us for a curated series of Mediterranean-inspired gatherings.</p>
+      </section>
+
+      {/* Upcoming Events or Private Booking CTA */}
+      {EVENTS.length > 0 ? (
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+            {EVENTS.map(event => (
+              <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-[#f5f0e1] rounded-[60px] overflow-hidden shadow-2xl">
+                <div className="h-[500px] lg:h-full">
+                  <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                 </div>
-                <div className="p-16 flex flex-col justify-center bg-stone-50">
-                  <span className="text-stone-400 font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
-                  <h3 className="text-4xl mb-6 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h3>
-                  <p className="text-stone-500 leading-relaxed text-lg font-light">{event.description}</p>
+                <div className="p-16 flex flex-col justify-center">
+                  <span className="text-[#d9a74a] font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
+                  <h2 className="text-5xl mb-8 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h2>
+                  <p className="text-stone-600 mb-10 leading-relaxed text-xl font-light">{event.description}</p>
+                  {event.specialOffer && (
+                    <div className="bg-[#6ec471]/10 border-2 border-[#6ec471] rounded-2xl p-6 mb-10">
+                      <p className="text-[#2a2a2a] font-bold text-lg text-center">{event.specialOffer}</p>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => window.open(event.reservationUrl || 'https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
+                    className="bg-[#6ec471] text-white px-12 py-5 rounded-full font-bold w-fit hover:bg-[#2a2a2a] transition-all shadow-xl uppercase tracking-widest text-xs">
+                    Reserve Now
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
+      ) : (
+        /* No upcoming events — full-width dark private event section */
+        <section className="bg-[#2a2a2a] py-0 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+            <div className="relative h-[400px] lg:h-auto">
+              <img
+                src="/2EEE2E2B-F367-4525-8CA4-BB25F2B3E760.JPEG"
+                alt="Private events at The Green Olive Bar and Grill"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#2a2a2a]/60 lg:block hidden" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2a2a2a]/60 to-transparent lg:hidden" />
+            </div>
+            <div className="px-12 py-20 lg:px-20 flex flex-col justify-center">
+              <span className="text-[#6ec471] font-black uppercase tracking-[0.35em] text-[13px] mb-6 block">Private Events</span>
+              <h2 className="text-5xl md:text-6xl mb-8 font-bold uppercase tracking-tighter text-white leading-tight">Reserve The<br />Restaurant.</h2>
+              <div className="w-16 h-1 bg-[#d9a74a] rounded-full mb-8" />
+              <p className="text-stone-300 mb-6 leading-relaxed text-lg font-light">
+                Host your next celebration, corporate dinner, or private gathering at The Green Olive. Full restaurant buyouts, custom menus, and dedicated staff — exclusively for your group.
+              </p>
+              <p className="text-stone-400 mb-10 leading-relaxed text-base font-light italic">
+                Birthdays · Anniversaries · Rehearsal Dinners · Team Events
+              </p>
+              <div className="border border-white/10 rounded-[20px] p-6 mb-10 space-y-4 bg-white/5 backdrop-blur-sm">
+                <p className="text-[#d9a74a] font-bold text-xs uppercase tracking-widest mb-2">Get In Touch</p>
+                <a href="tel:6023543424" className="flex items-center space-x-3 text-stone-300 hover:text-[#6ec471] transition-colors text-base font-light">
+                  <span className="text-[#d9a74a]">📞</span>
+                  <span>(602) 354-3424</span>
+                </a>
+                <a href="mailto:thegreenolivelitchfield@gmail.com?subject=Private Event Inquiry" className="flex items-center space-x-3 text-stone-300 hover:text-[#6ec471] transition-colors text-base font-light">
+                  <span className="text-[#d9a74a] shrink-0">✉</span>
+                  <span className="break-all">thegreenolivelitchfield@gmail.com</span>
+                </a>
+              </div>
+              <a
+                href="mailto:thegreenolivelitchfield@gmail.com?subject=Private Event Inquiry"
+                className="bg-[#d9a74a] text-[#2a2a2a] px-12 py-5 rounded-full font-bold w-fit hover:bg-[#6ec471] hover:text-white transition-all shadow-xl uppercase tracking-widest text-xs"
+              >
+                Inquire About Your Event
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Past Events Section */}
+      {PAST_EVENTS.length > 0 && (
+        <section className="bg-[#f5f0e1] py-28">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex items-center gap-8 mb-20">
+              <div className="flex-1 h-px bg-[#d9a74a]/30" />
+              <div className="text-center">
+                <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[13px] mb-3 block">The Archives</span>
+                <h2 className="text-5xl md:text-6xl tracking-tighter uppercase font-bold text-[#2a2a2a]">Past Events</h2>
+              </div>
+              <div className="flex-1 h-px bg-[#d9a74a]/30" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {PAST_EVENTS.map(event => (
+                <div key={event.id} className="bg-white rounded-[40px] overflow-hidden shadow-xl flex flex-col group">
+                  <div className="h-[320px] relative overflow-hidden">
+                    {event.video
+                      ? <PastEventVideo src={event.video} poster={event.image} alt={event.title} />
+                      : <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                    }
+                    <div className="absolute top-5 left-5">
+                      <span className="bg-[#2a2a2a]/80 backdrop-blur-sm text-[#d9a74a] font-black text-[11px] tracking-[0.25em] uppercase px-4 py-2 rounded-full">{event.date}</span>
+                    </div>
+                  </div>
+                  <div className="p-10 flex flex-col flex-1">
+                    <h3 className="text-3xl mb-4 font-bold uppercase tracking-tighter text-[#2a2a2a]">{event.title}</h3>
+                    <div className="w-10 h-0.5 bg-[#6ec471] rounded-full mb-4" />
+                    <p className="text-stone-500 leading-relaxed text-base font-light">{event.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
     </div>
   );
