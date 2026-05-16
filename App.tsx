@@ -674,11 +674,20 @@ function EventsPage() {
     <div className="animate-in fade-in">
 
       {/* Page Header */}
-      <section className="pt-40 pb-16 text-center px-6 bg-[#f5f0e1]">
-        <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[13px] mb-6 block">The Calendar</span>
-        <h1 className="text-6xl md:text-9xl tracking-tighter uppercase font-bold text-[#2a2a2a] mb-6">Our Events</h1>
-        <div className="w-16 h-1 bg-[#6ec471] rounded-full mx-auto mb-6" />
-        <p className="text-stone-500 italic font-serif text-xl font-light max-w-xl mx-auto">Join us for a curated series of Mediterranean-inspired gatherings.</p>
+      <section className="relative pt-40 pb-20 bg-[#f5f0e1] overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <span className="text-[#2a2a2a]/5 font-black uppercase tracking-tighter text-[22vw] leading-none whitespace-nowrap">EVENTS</span>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+          <div>
+            <span className="text-[#d9a74a] font-black uppercase tracking-[0.4em] text-[13px] mb-6 block">The Calendar</span>
+            <h1 className="text-7xl md:text-[10rem] tracking-tighter uppercase font-bold text-[#2a2a2a] leading-none">Our<br />Events</h1>
+          </div>
+          <div className="md:pb-4 max-w-xs">
+            <div className="w-10 h-1 bg-[#6ec471] rounded-full mb-5" />
+            <p className="text-stone-500 italic font-serif text-lg font-light leading-relaxed">Join us for a curated series of Mediterranean-inspired gatherings.</p>
+          </div>
+        </div>
       </section>
 
       {/* Upcoming Events or Private Booking CTA */}
