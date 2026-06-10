@@ -192,7 +192,9 @@ export const MENU_DATA: MenuItem[] = [
   { id: 'ct_pt20', name: 'Panini Tray', price: '$120', description: 'Choose 7 Full Paninis Cut Into Halves With Caesar Salad (Feeds 10 - 12)', menuType: 'Catering', section: 'Party Trays To Go' },
 ];
 
-export const EVENTS: EventItem[] = [];
+export const EVENTS: EventItem[] = [
+  { id: 'e3', title: "Father's Day", date: 'June 21st, 2026', description: "Celebrate the dads in your life at The Green Olive Bar & Grill. Join us for a special Father's Day celebration with great food and great company.", image: '/Fathers Day.jpg' },
+];
 
 export const PAST_EVENTS: EventItem[] = [
   { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', video: '/Turkish.mp4' },
