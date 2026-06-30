@@ -258,47 +258,59 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
       {/* Family Style Dinner Promo */}
       <section className="py-24 bg-[#1c1c1a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-12">
-            <span className="text-[#6ec471] font-black uppercase tracking-[0.3em] text-[13px] mb-4 block">Dine In Only — Mon to Wed</span>
-            <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white leading-none mb-6">
-              Family <span className="text-[#d9a74a]">Style&nbsp;&nbsp;Dinner.</span>
-            </h2>
-            <div className="w-16 h-1 bg-[#d9a74a] rounded-full mx-auto mb-8"></div>
-            <div className="mb-6">
-              <span className="text-[#d9a74a] text-5xl font-black tracking-tight">$59.99</span>
-              <span className="text-stone-500 text-sm font-light ml-3 uppercase tracking-widest">Feeds 4–5</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Image */}
+            <div className="relative rounded-[40px] overflow-hidden shadow-2xl order-2 lg:order-1">
+              <img
+                src="/Familymealspecial.png.jpeg"
+                alt="Family Style Dinner at The Green Olive"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-[620px] object-cover object-[center_65%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1a]/40 to-transparent"></div>
             </div>
-            <p className="text-stone-400 text-lg font-light max-w-2xl mx-auto leading-relaxed">
-              Gather around the table and savor the Mediterranean way. Our Family-Style Dinner is made for sharing — grilled kabobs, fresh salads, creamy hummus, warm pita, fragrant rice, and all your favorite Mediterranean flavors.
-            </p>
-          </div>
 
-          {/* Included items */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
-            {[
-              'Beef Kabob',
-              'Chicken Kabob',
-              'Kofta Kabob',
-              'Salad',
-              'Rice',
-              'Hummus',
-              'Pita Bread',
-              'Green Sauce',
-            ].map(item => (
-              <div key={item} className="flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d9a74a] flex-shrink-0"></span>
-                <span className="text-stone-300 text-sm font-medium">{item}</span>
+            {/* Content */}
+            <div className="order-1 lg:order-2">
+              <span className="text-[#6ec471] font-black uppercase tracking-[0.3em] text-[13px] mb-4 block">Dine In Only — Mon - Wed</span>
+              <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white leading-none mb-6">
+                Family <span className="text-[#d9a74a]">Style&nbsp;&nbsp;Dinner.</span>
+              </h2>
+              <div className="w-16 h-1 bg-[#d9a74a] rounded-full mb-8"></div>
+              <div className="mb-6">
+                
               </div>
-            ))}
-          </div>
+              <p className="text-stone-400 text-lg font-light mb-10 leading-relaxed">
+                Gather around the table and savor the Mediterranean way. Our Family-Style Dinner is made for sharing — grilled kabobs, fresh salads, creamy hummus, warm pita, fragrant rice, and all your favorite Mediterranean flavors.
+              </p>
 
-          <div className="text-center">
-            <button
-              onClick={() => window.open('https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
-              className="px-12 py-5 bg-[#6ec471] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#d9a74a] transition-all shadow-xl"
-            >
-              Reserve a Table
-            </button>
+              {/* Included items */}
+              <div className="grid grid-cols-2 gap-3 mb-10">
+                {[
+                  'Beef Kabob',
+                  'Chicken Kabob',
+                  'Kofta Kabob',
+                  'Salad',
+                  'Rice',
+                  'Hummus',
+                  'Pita Bread',
+                  'Green Sauce',
+                ].map(item => (
+                  <div key={item} className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#d9a74a] flex-shrink-0"></span>
+                    <span className="text-stone-300 text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={() => window.open('https://tableagent.com/phoenix/the-green-olive-bar-and-grill/table-search/', '_blank')}
+                className="px-12 py-5 bg-[#6ec471] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#d9a74a] transition-all shadow-xl"
+              >
+                Reserve a Table
+              </button>
+            </div>
           </div>
         </div>
       </section>
