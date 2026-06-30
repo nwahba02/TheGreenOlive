@@ -258,15 +258,15 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
       {/* Family Style Dinner Promo */}
       <section className="py-24 bg-[#1c1c1a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 items-center">
             {/* Image */}
             <div className="relative rounded-[40px] overflow-hidden shadow-2xl order-2 lg:order-1">
               <img
-                src="/Familymealspecial.png.jpeg"
+                src="/meal.jpeg"
                 alt="Family Style Dinner at The Green Olive"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-[620px] object-cover object-[center_65%]"
+                className="w-full h-auto object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1a]/40 to-transparent"></div>
             </div>
@@ -278,9 +278,6 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
                 Family <span className="text-[#d9a74a]">Style&nbsp;&nbsp;Dinner.</span>
               </h2>
               <div className="w-16 h-1 bg-[#d9a74a] rounded-full mb-8"></div>
-              <div className="mb-6">
-                
-              </div>
               <p className="text-stone-400 text-lg font-light mb-10 leading-relaxed">
                 Gather around the table and savor the Mediterranean way. Our Family-Style Dinner is made for sharing — grilled kabobs, fresh salads, creamy hummus, warm pita, fragrant rice, and all your favorite Mediterranean flavors.
               </p>
