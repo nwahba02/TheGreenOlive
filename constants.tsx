@@ -67,11 +67,27 @@ export const MENU_DATA: MenuItem[] = [
   { id: 'dk_c10', name: 'Blue Lady', price: '$12', description: 'Still gin, blue curaçao, lemon juice & egg white.', menuType: 'Drinks', section: 'Cocktails' },
   { id: 'dk_c11', name: 'Billionaire', price: '$12', description: 'Empress gin 1908, tonic water, lime juice.', menuType: 'Drinks', section: 'Cocktails' },
 
-  { id: 'dk_ws1', name: 'Cava Freixinet "Blanc de Blancs, Spain"', price: '$9 / $36', description: '', menuType: 'Drinks', section: 'Wine List (Sparkling)' },
-  { id: 'dk_ww1', name: '"Daisy" Bieler Family \'23, Washington State', price: '$9 / $36', description: '', menuType: 'Drinks', section: 'Wine List (White)' },
-  { id: 'dk_wp1', name: 'Rose Bieler Pere & Fils \'23, Provence, France', price: '$10 / $40', description: '', menuType: 'Drinks', section: 'Wine List (Pink)' },
-  { id: 'dk_wr1', name: '"Los Oses" J. Lohr Wines \'22, Paso Robles, California', price: '$9 / $36', description: '', menuType: 'Drinks', section: 'Wine List (Red)' },
-  { id: 'dk_wrb1', name: '"Silk & Spice" \'22, Portugal', price: '$9 / $36', description: '', menuType: 'Drinks', section: 'Wine List (Red Blend)' },
+  { id: 'dk_ws1', name: 'Cava Freixinet "Blanc de Blancs"', price: 'glass $7 / bottle $25', description: 'Spain', menuType: 'Drinks', section: 'Wine (Sparkling)' },
+
+  { id: 'dk_ww1', name: 'Pinot Grigio', price: 'glass $9 / bottle $33', description: "'Daisy' Bieler Family '23, Washington State", menuType: 'Drinks', section: 'Wine (White)' },
+  { id: 'dk_ww2', name: 'Chardonnay', price: 'glass $10 / bottle $37', description: "'Eve' Charles Smith Wines '22, Washington State", menuType: 'Drinks', section: 'Wine (White)' },
+  { id: 'dk_ww3', name: 'Sauvignon Blanc', price: 'glass $13 / bottle $49', description: "Charles Krug '23, Napa Valley, California", menuType: 'Drinks', section: 'Wine (White)' },
+  { id: 'dk_ww4', name: 'Gigis Garden', price: 'glass $10 / bottle $37', description: 'Sauvignon Blanc – Pinot', menuType: 'Drinks', section: 'Wine (White)' },
+
+  { id: 'dk_wp1', name: 'Rosé', price: 'glass $10 / bottle $37', description: "Bieler Pere & Fils '23, Provence, France", menuType: 'Drinks', section: 'Wine (Pink)' },
+
+  { id: 'dk_wr1', name: 'Merlot', price: 'glass $9 / bottle $33', description: "'Los Osos' J. Lohr Wines '22, Paso Robles, California", menuType: 'Drinks', section: 'Wine (Red)' },
+  { id: 'dk_wr2', name: 'Antigal Uno Malbec', price: 'glass $10 / bottle $37', description: '', menuType: 'Drinks', section: 'Wine (Red)' },
+  { id: 'dk_wr3', name: 'Cabernet Sauvignon', price: 'glass $11 / bottle $41', description: '', menuType: 'Drinks', section: 'Wine (Red)' },
+  { id: 'dk_wr4', name: 'Brunello di Montalcino', price: 'bottle $120', description: '', menuType: 'Drinks', section: 'Wine (Red)' },
+
+  { id: 'dk_wrb1', name: 'Silk & Spice', price: 'glass $9 / bottle $33', description: "'22, Portugal", menuType: 'Drinks', section: 'Wine (Red Blend)' },
+
+  { id: 'dk_wsm1', name: 'Poggio Badiola', price: 'glass $13 / bottle $49', description: "Mazzei '21, Tuscany, Italy", menuType: 'Drinks', section: 'Wine (Sangiovese/Merlot)' },
+
+  { id: 'dk_wst1', name: 'Il Bruciato', price: 'bottle $75', description: "Antinori '23, Bolgheri, Italy", menuType: 'Drinks', section: 'Wine (Super Tuscan Blend)' },
+
+  { id: 'dk_wpn1', name: 'Davis Bynum', price: 'bottle $48', description: '', menuType: 'Drinks', section: 'Wine (Pinot Noir)' },
 
   { id: 'dk_db1', name: 'Michelob', price: '$6', description: '', menuType: 'Drinks', section: 'Draft Beer' },
   { id: 'dk_db2', name: 'Modelo', price: '$6', description: '', menuType: 'Drinks', section: 'Draft Beer' },

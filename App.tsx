@@ -596,7 +596,7 @@ const MenuPage = ({ activeMenuType, setActiveMenuType }: { activeMenuType: MenuT
 
   // Explicit ordering for sections
   const lunchDinnerSectionOrder = ['Starters', 'Salads', 'Platters', 'Pizza', 'Pastas', 'Kids Menu', 'Desserts'];
-  const drinksSectionOrder = ['Cocktails', 'Wine List (Sparkling)', 'Wine List (White)', 'Wine List (Pink)', 'Wine List (Red)', 'Wine List (Red Blend)', 'Draft Beer', 'Bottle Beer'];
+  const drinksSectionOrder = ['Cocktails', 'Wine (Sparkling)', 'Wine (White)', 'Wine (Pink)', 'Wine (Red)', 'Wine (Red Blend)', 'Wine (Sangiovese/Merlot)', 'Wine (Super Tuscan Blend)', 'Wine (Pinot Noir)', 'Draft Beer', 'Bottle Beer'];
   const cateringSectionOrder = ['Mediterranean Feast', 'Protein Choice', 'Side Choice', 'Salad Choice', 'Party Trays To Go'];
   const itemsInActiveMenu = MENU_DATA.filter(item => item.menuType === activeMenuType);
 
