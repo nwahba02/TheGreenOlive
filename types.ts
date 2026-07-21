@@ -1,5 +1,5 @@
 
-export type MenuType = 'Brunch' | 'Lunch/Dinner' | 'Drinks' | 'Catering';
+export type MenuType = 'Lunch/Dinner' | 'Drinks' | 'Catering';
 
 export interface MenuItem {
   id: string;

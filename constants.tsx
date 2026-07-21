@@ -2,65 +2,6 @@
 import { MenuItem, EventItem, GalleryImage } from './types';
 
 export const MENU_DATA: MenuItem[] = [
-  // --- BRUNCH MENU ---
-  { id: 'br1', name: 'Greek Omelet', price: '$15', description: '3 eggs, spinach, cherry tomatoes, and feta cheese. Served with house salad & toast.', menuType: 'Brunch', section: 'Breakfast', popular: true },
-  { id: 'br2', name: 'Veggie Omelet', price: '$14', description: '3 eggs, mushrooms, peppers, onions, tomatoes, and mozzarella cheese. Served with house salad & toast.', menuType: 'Brunch', section: 'Breakfast' },
-  { id: 'br3', name: 'Breakfast Sandwich', price: '$14', description: 'Avocado, egg, and cheese.', menuType: 'Brunch', section: 'Breakfast' },
-  { id: 'br4', name: 'Breakfast Wrap', price: '$15', description: 'Scrambled eggs, avocado, spinach, cherry tomatoes, and feta cheese.', menuType: 'Brunch', section: 'Breakfast' },
-  { id: 'br5', name: 'Avocado Toast', price: '$16', description: 'Two eggs any style, lemon zest, mix greens, cherry tomatoes, and lemon vinaigrette.', menuType: 'Brunch', section: 'Breakfast', popular: true },
-  { id: 'br6', name: 'Classic Americano', price: '$15', description: 'Two eggs any style, bacon, ham, or sausage, served with potatoes and toast.', menuType: 'Brunch', section: 'Breakfast' },
-  { id: 'br7', name: 'Ribeye', price: '$22', description: '8oz ribeye, two eggs any style, served with potatoes and toast.', menuType: 'Brunch', section: 'Breakfast' },
-  { id: 'br8', name: 'French Toast', price: '$14', description: 'French toast with a berry compote, cinnamon, sugar, whipped cream, bananas, and seasonal fruit.', menuType: 'Brunch', section: 'Breakfast' },
-
-  { id: 'cf1', name: 'Espresso', price: '$3.95', description: 'Rich and bold house roast.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf2', name: 'Cappuccino', price: '$5.75', description: 'Espresso with airy foam.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf3', name: 'Cafe Latte', price: '$5.75', description: 'Classic creamy espresso latte.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf4', name: 'Vanilla Latte', price: '$6.50', description: 'Espresso with Madagascar vanilla.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf5', name: 'Spanish Latte', price: '$6.50', description: 'Sweetened condensed milk latte.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf6', name: 'Matcha Latte', price: '$6.50', description: 'Ceremonial grade matcha.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf7', name: 'Hot Chocolate', price: '$5.75', description: 'House-made cocoa blend.', menuType: 'Brunch', section: 'Coffee' },
-  { id: 'cf8', name: 'Chai Latte', price: '$6.50', description: 'Spiced aromatic tea.', menuType: 'Brunch', section: 'Coffee' },
-
-  { id: 'mm1', name: 'Orange', price: '$9', description: 'Freshly squeezed orange juice and champagne.', menuType: 'Brunch', section: 'Mimosas' },
-  { id: 'mm2', name: 'Grapefruit', price: '$9', description: 'Ruby red grapefruit juice and champagne.', menuType: 'Brunch', section: 'Mimosas' },
-  { id: 'mm3', name: 'Titos House Bloody Mary', price: '$12', description: 'Our signature spicy house mix.', menuType: 'Brunch', section: 'Mimosas', popular: true },
-
-  { id: 'w1', name: 'Beef Kebab', price: '$17', description: 'U.S.D.A. Choice beef kabob with lettuce, tomatoes, and garlic lemon house dressing rolled in a pita bread.', menuType: 'Brunch', section: 'Wraps' },
-  { id: 'w2', name: 'Chicken Kebab', price: '$18', description: 'Famous chicken breast kabob with garlic lemon dressing rolled in a pita bread.', menuType: 'Brunch', section: 'Wraps', popular: true },
-  { id: 'w3', name: 'Kofta Kebab', price: '$18', description: 'Grilled ground beef kofta with garlic lemon dressing rolled in a pita bread.', menuType: 'Brunch', section: 'Wraps' },
-  { id: 'w4', name: 'Gyro', price: '$17', description: 'Lamb and ground steak gyro with tzatziki sauce rolled in a flat bread.', menuType: 'Brunch', section: 'Wraps' },
-  { id: 'w5', name: 'Falafel', price: '$17', description: 'Falafel patties with lettuce, tomatoes, and tahini sauce rolled in a pita bread.', menuType: 'Brunch', section: 'Wraps' },
-  { id: 'w6', name: 'Salmon', price: '$19', description: 'Mediterranean seasoned salmon with rice, fattouch salad, grilled onions, yellow squash, and green zucchini in a pita.', menuType: 'Brunch', section: 'Wraps' },
-  { id: 'w7', name: 'Chicken Shawarma', price: '$18', description: 'Slow-roasted chicken shawarma with garlic sauce rolled in a pita bread.', menuType: 'Brunch', section: 'Wraps' },
-
-  { id: 'p1', name: 'Chicken Breast Special', price: '$16', description: 'Grilled chicken breast, avocado, sun dried tomato, provolone cheese and pesto sauce on Italian ciabatta bread.', menuType: 'Brunch', section: 'Paninis', image: '/craigrootimaging_GO-339-scaled.jpg' },
-  { id: 'p2', name: 'Tuna Avocado', price: '$16', description: 'Tuna, avocado, sun-dried tomatoes, provolone cheese and pesto sauce on Italian ciabatta bread.', menuType: 'Brunch', section: 'Paninis' },
-  { id: 'p3', name: 'Turkey', price: '$16', description: 'Sliced turkey breast, avocado, tomato, provolone cheese and pesto sauce on Italian ciabatta bread.', menuType: 'Brunch', section: 'Paninis' },
-  { id: 'p4', name: 'Chicken Bacon Chipotle', price: '$16', description: 'Grilled chicken, bacon, tomato, provolone, cilantro and chipotle sauce on Italian ciabatta.', menuType: 'Brunch', section: 'Paninis', popular: true },
-  { id: 'p5', name: 'Vegetarian', price: '$16', description: 'Grilled eggplant, spring mix, roasted red peppers, fresh roma tomato, provolone cheese and pesto sauce.', menuType: 'Brunch', section: 'Paninis' },
-  { id: 'p6', name: 'Caprese Panini', price: '$16', description: 'Buffalo mozzarella, roma tomatoes, fresh basil and pesto bread.', menuType: 'Brunch', section: 'Paninis' },
-
-  { id: 'hd1', name: 'Babaganoush with Pita', price: '$10', description: 'Roasted eggplant dip.', menuType: 'Brunch', section: 'House Dip' },
-  { id: 'hd2', name: 'Hummus with Pita', price: '$9', description: 'Creamy chickpea and tahini dip.', menuType: 'Brunch', section: 'House Dip' },
-  { id: 'hd3', name: 'Garlic Paste', price: '$9', description: 'Bold and creamy garlic dip.', menuType: 'Brunch', section: 'House Dip' },
-  { id: 'hd4', name: 'Dip Trio', price: '$15', description: 'Babaganoush, Hummus, & Spicy Feta.', menuType: 'Brunch', section: 'House Dip', popular: true },
-
-  { id: 'es1', name: 'Tahini Cup', price: '$.75', description: 'Classic sesame dip.', menuType: 'Brunch', section: 'Extra Sauces' },
-  { id: 'es2', name: 'Garlic Dressing', price: '$.75', description: 'House garlic lemon dressing.', menuType: 'Brunch', section: 'Extra Sauces' },
-  { id: 'es3', name: 'Green Hot Sauce Cup', price: '$.75', description: 'Our signature spicy green sauce.', menuType: 'Brunch', section: 'Extra Sauces' },
-
-  { id: 's1', name: '2 Eggs', price: '$4.50', description: 'Any style.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's2', name: '2 Toast', price: '$4', description: 'White or Whole Wheat.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's3', name: 'Seasonal Fruit', price: '$5', description: 'Assorted seasonal harvest.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's4', name: 'Home Fries', price: '$4', description: 'Crispy cubed potatoes.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's5', name: 'Bacon', price: '$5', description: 'Thick cut applewood smoked.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's6', name: 'Sausage', price: '$4', description: 'Pork or Turkey.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's7', name: 'Avocado', price: '$4.50', description: 'Freshly sliced half.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's8', name: 'French Fries', price: '$4', description: 'Classic golden fries.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's9', name: 'Falafel Patty', price: '$10', description: 'Two house-made falafels.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's10', name: 'Dolmas (6)', price: '$12', description: 'Grape leaves stuffed with rice.', menuType: 'Brunch', section: 'Sides' },
-  { id: 's11', name: 'Spicy Potatoes', price: '$11', description: 'Cubed potatoes with mediterranean spices.', menuType: 'Brunch', section: 'Sides' },
-
   // --- LUNCH/DINNER MENU ---
   { id: 'ls1', name: 'Marinated Olives', price: '$9', description: 'Fennel seed & orange zest.', menuType: 'Lunch/Dinner', section: 'Starters' },
   { id: 'ls2', name: 'Crispy Fried Calamari', price: '$16', description: 'Marinara sauce & herb aioli.', menuType: 'Lunch/Dinner', section: 'Starters', popular: true },
@@ -102,7 +43,6 @@ export const MENU_DATA: MenuItem[] = [
 
   { id: 'lpa1', name: 'Spaghetti with Dungeness Crab', price: '$29', description: 'Garlic, red fresno chili, white wine.', menuType: 'Lunch/Dinner', section: 'Pastas' },
   { id: 'lpa2', name: 'Pappardelle', price: '$24', description: 'Short rib & porcini mushroom ragu.', menuType: 'Lunch/Dinner', section: 'Pastas', popular: true, image: '/craigrootimaging_GO-346-scaled.jpg'},
-    { id: 'p1', name: 'Chicken Breast Special', price: '$16', description: 'Grilled chicken breast, avocado, sun dried tomato, provolone cheese and pesto sauce on Italian ciabatta bread.', menuType: 'Brunch', section: 'Paninis', image: '/craigrootimaging_GO-339-scaled.jpg' },
   { id: 'lpa3', name: 'Bucatini Cacio e Pepe', price: '$17', description: 'Black pepper & pecorino romano.', menuType: 'Lunch/Dinner', section: 'Pastas' },
   { id: 'lpa4', name: 'Spaghetti with Little Neck Clams', price: '$22', description: 'Chili garlic butter with white wine.', menuType: 'Lunch/Dinner', section: 'Pastas' },
 
@@ -193,10 +133,11 @@ export const MENU_DATA: MenuItem[] = [
 ];
 
 export const EVENTS: EventItem[] = [
-  { id: 'e3', title: "Father's Day", date: 'June 21st, 2026', description: "Celebrate the dads in your life at The Green Olive Bar & Grill. Join us for a special Father's Day celebration with great food and great company.", image: '/Fathers Day.jpg' },
+  { id: 'e4', title: 'Summer Wine Dinner', date: 'August 22nd, 2026, 5:00 PM - 7:00 PM', description: 'Join us for an evening of expertly paired wines and a multi-course summer menu crafted by our kitchen at The Green Olive Bar & Grill.', image: '/SummerWineDinner.jpg', reservationUrl: 'https://tableagent.com/restaurant/the-green-olive-bar-and-grill/event/285385/summer-wine-dinner/' },
 ];
 
 export const PAST_EVENTS: EventItem[] = [
+  { id: 'e3', title: "Father's Day", date: 'June 21st, 2026', description: "Celebrate the dads in your life at The Green Olive Bar & Grill. Join us for a special Father's Day celebration with great food and great company.", image: '/Fathers Day.jpg' },
   { id: 'e2', title: 'Turkish Night', date: 'April 11th, 8:30 PM - 1:00 AM', description: 'Experience an evening of authentic Turkish flavors and culture', image: '/TurkishNight.jpg', video: '/Turkish.mp4' },
   { id: 'e1', title: 'For Her & I', date: 'Feb 14th, 4:00 PM - 10:00 PM', description: 'Celebrate love this Valentines Day at The Green Olive Bar & Grill', image: '/ForHer&I.png', video: '/ForHer.mp4' }
 ];

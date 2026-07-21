@@ -273,10 +273,14 @@ const HomePage = ({ setActiveMenuType }: { setActiveMenuType: (t: MenuType) => v
 
             {/* Content */}
             <div className="order-1 lg:order-2">
-              <span className="text-[#6ec471] font-black uppercase tracking-[0.3em] text-[13px] mb-4 block">Dine In Only — Mon - Wed</span>
+              <span className="text-[#6ec471] font-black uppercase tracking-[0.3em] text-[13px] mb-4 block">Mon - Wed</span>
               <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white leading-none mb-6">
                 Family <span className="text-[#d9a74a]">Style&nbsp;&nbsp;Dinner.</span>
               </h2>
+              <span className="inline-flex items-center gap-2 border-2 border-[#6ec471] text-[#6ec471] font-black uppercase tracking-[0.2em] text-sm px-5 py-2 rounded-full mb-8">
+                <span className="w-2 h-2 rounded-full bg-[#6ec471]"></span>
+                Dine In Only
+              </span>
               <div className="w-16 h-1 bg-[#d9a74a] rounded-full mb-8"></div>
               <p className="text-stone-400 text-lg font-light mb-10 leading-relaxed">
                 Gather around the table and savor the Mediterranean way. Our Family-Style Dinner is made for sharing — grilled kabobs, fresh salads, creamy hummus, warm pita, fragrant rice, and all your favorite Mediterranean flavors.
@@ -588,18 +592,16 @@ const MenuPage = ({ activeMenuType, setActiveMenuType }: { activeMenuType: MenuT
     }
   }, []);
 
-  const menuTypes: MenuType[] = ['Brunch', 'Lunch/Dinner', 'Drinks', 'Catering'];
+  const menuTypes: MenuType[] = ['Lunch/Dinner', 'Drinks', 'Catering'];
 
   // Explicit ordering for sections
-  const brunchSectionOrder = ['Breakfast', 'Wraps', 'Paninis', 'House Dip', 'Extra Sauces', 'Sides', 'Coffee', 'Mimosas'];
   const lunchDinnerSectionOrder = ['Starters', 'Salads', 'Platters', 'Pizza', 'Pastas', 'Kids Menu', 'Desserts'];
   const drinksSectionOrder = ['Cocktails', 'Wine List (Sparkling)', 'Wine List (White)', 'Wine List (Pink)', 'Wine List (Red)', 'Wine List (Red Blend)', 'Draft Beer', 'Bottle Beer'];
   const cateringSectionOrder = ['Mediterranean Feast', 'Protein Choice', 'Side Choice', 'Salad Choice', 'Party Trays To Go'];
   const itemsInActiveMenu = MENU_DATA.filter(item => item.menuType === activeMenuType);
-  
+
   let sections: string[] = [];
-  if (activeMenuType === 'Brunch') sections = brunchSectionOrder;
-  else if (activeMenuType === 'Lunch/Dinner') sections = lunchDinnerSectionOrder;
+  if (activeMenuType === 'Lunch/Dinner') sections = lunchDinnerSectionOrder;
   else if (activeMenuType === 'Drinks') sections = drinksSectionOrder;
   else if (activeMenuType === 'Catering') sections = cateringSectionOrder;
 
@@ -607,7 +609,6 @@ const MenuPage = ({ activeMenuType, setActiveMenuType }: { activeMenuType: MenuT
 
   // Hero images for each menu type
   const heroImages: Record<string, string> = {
-    'Brunch': '/craigrootimaging_GO-317-scaled.jpg',
     'Lunch/Dinner': '/craigrootimaging_GO-254-scaled.jpg',
     'Drinks': '/craigrootimaging_GO-415-scaled.jpg',
     'Catering': '/2.jpg',
@@ -754,7 +755,7 @@ function EventsPage() {
             {EVENTS.map(event => (
               <div key={event.id} className="grid grid-cols-1 lg:grid-cols-2 bg-[#f5f0e1] rounded-[60px] overflow-hidden shadow-2xl">
                 <div className="h-[500px] lg:h-full">
-                  <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                  <img src={event.image} alt={event.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-16 flex flex-col justify-center">
                   <span className="text-[#d9a74a] font-black text-[12px] tracking-[0.3em] uppercase mb-6">{event.date}</span>
